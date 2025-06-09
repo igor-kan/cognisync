@@ -11,49 +11,13 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Brain, Send, Mic, MicOff, ArrowLeft, MoreVertical, Target, Users, BookOpen, Zap } from "lucide-react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { modeConfig } from "@/lib/modeConfig"
 
 interface Message {
   id: string
   role: "user" | "assistant"
   content: string
   timestamp: Date
-}
-
-const modeConfig = {
-  cognitive: {
-    name: "Cognitive Coach",
-    icon: Target,
-    color: "blue",
-    description: "CBT-style cognitive restructuring",
-    systemPrompt: "I help you identify and challenge cognitive distortions using CBT techniques.",
-  },
-  "inner-child": {
-    name: "Inner Child Work",
-    icon: Users,
-    color: "green",
-    description: "IFS-inspired parts work",
-    systemPrompt: "I guide you through Internal Family Systems work to heal and integrate different parts of yourself.",
-  },
-  narrative: {
-    name: "Narrative Editor",
-    icon: BookOpen,
-    color: "purple",
-    description: "Story reframing and meaning-making",
-    systemPrompt: "I help you reframe your life experiences and create empowering narratives.",
-  },
-  meditation: {
-    name: "Meditation Partner",
-    icon: Zap,
-    color: "orange",
-    description: "Mindfulness and breathwork guidance",
-    systemPrompt: "I guide you through meditation, breathwork, and mindfulness practices.",
-  },
-}
-
-export async function generateStaticParams() {
-  return Object.keys(modeConfig).map((mode) => ({
-    mode: mode,
-  }))
 }
 
 export default function SessionPage() {
@@ -65,7 +29,7 @@ export default function SessionPage() {
     {
       id: "1",
       role: "assistant",
-      content: `Hello! I'm your ${config?.name}. ${config?.systemPrompt} What would you like to explore today?`,
+      content: `Hello! I\'m your ${config?.name}. ${config?.systemPrompt} What would you like to explore today?`,
       timestamp: new Date(),
     },
   ])
@@ -98,24 +62,24 @@ export default function SessionPage() {
     setTimeout(() => {
       const responses = {
         cognitive: [
-          "I notice you're using some strong language there. Let's examine this thought - is it helpful or accurate? What evidence do you have for and against this belief?",
-          "That sounds like a cognitive distortion called 'all-or-nothing thinking.' Can you think of a more balanced way to view this situation?",
-          "Let's try a thought record. What was the situation, what thoughts came up, how did you feel, and what would be a more realistic thought?",
+          "I notice you\'re using some strong language there. Let\'s examine this thought - is it helpful or accurate? What evidence do you have for and against this belief?",
+          "That sounds like a cognitive distortion called \'all-or-nothing thinking.\' Can you think of a more balanced way to view this situation?",
+          "Let\'s try a thought record. What was the situation, what thoughts came up, how did you feel, and what would be a more realistic thought?",
         ],
         "inner-child": [
           "I hear a part of you that sounds hurt. Can you tell me more about this part? How old does it feel?",
-          "It sounds like your inner critic is very active. What would you say to comfort the younger part of you that's feeling this way?",
-          "Let's check in with different parts of yourself. What does your wise adult self want to tell your inner child right now?",
+          "It sounds like your inner critic is very active. What would you say to comfort the younger part of you that\'s feeling this way?",
+          "Let\'s check in with different parts of yourself. What does your wise adult self want to tell your inner child right now?",
         ],
         narrative: [
-          "That's a powerful story you're telling. What if we looked at this experience as a chapter in your hero's journey rather than a failure?",
-          "I'm hearing themes of resilience in your story. How has this experience contributed to your growth?",
-          "Let's reframe this narrative. If this were happening to your best friend, how would you help them see the meaning in this experience?",
+          "That\'s a powerful story you\'re telling. What if we looked at this experience as a chapter in your hero\'s journey rather than a failure?",
+          "I\'m hearing themes of resilience in your story. How has this experience contributed to your growth?",
+          "Let\'s reframe this narrative. If this were happening to your best friend, how would you help them see the meaning in this experience?",
         ],
         meditation: [
-          "Let's pause here and take three deep breaths together. Notice what you're feeling in your body right now.",
+          "Let\'s pause here and take three deep breaths together. Notice what you\'re feeling in your body right now.",
           "I can sense some tension in your words. Would you like to try a brief body scan to release some of that stress?",
-          "Let's ground ourselves in the present moment. Can you name 5 things you can see, 4 things you can hear, and 3 things you can feel?",
+          "Let\'s ground ourselves in the present moment. Can you name 5 things you can see, 4 things you can hear, and 3 things you can feel?",
         ],
       }
 
