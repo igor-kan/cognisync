@@ -50,6 +50,12 @@ const modeConfig = {
   },
 }
 
+export async function generateStaticParams() {
+  return Object.keys(modeConfig).map((mode) => ({
+    mode: mode,
+  }))
+}
+
 export default function SessionPage() {
   const params = useParams()
   const mode = params.mode as string
