@@ -9,6 +9,7 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   basePath: '/cognisync',
+  assetPrefix: '/cognisync/',
   images: {
     unoptimized: true,
   },
